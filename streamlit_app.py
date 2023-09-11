@@ -34,9 +34,8 @@ def get_fruityvice_data(this_fruit_choice):
 
 
 #New section to display api response
-streamlit.header("Fruityvice Fruit Advice!")
+streamlit.header('Fruityvice Fruit Advice!')
 try:
-
    fruit_choice = streamlit.text_input('What fruit would you like information about?')
    if not fruit_choice:
         streamlit.error("Please select a fruit to get information.")
@@ -44,11 +43,10 @@ try:
         back_from_function = get_fruityvice_data(fruit_choice)
         streamlit.dataframe(back_from_function)
      
+streamlit.error()
 
-
-
-
-
+#don't run anything past here while we trouble shoot
+streamlit.stop()
 
 streamlit.header("The fruit load list contains:")
 #snowflake-realted functions
@@ -65,10 +63,7 @@ if streamlit.button('Get Fruit Load List'):
 
 
 
-fruit_choice = streamlit.text_input('What fruit would you like to add?','jackfruit')
-streamlit.write('Thanks for adding jackfruit')
 
-my_cur.execute("insert into fruit_load_list values ('from streamlit')")
 
 
 
