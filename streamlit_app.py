@@ -55,8 +55,7 @@ try:
 
 
 
-#don't run anything past here while we trouble shoot
-streamlit.stop()
+
 
 streamlit.header("The fruit load list contains:")
 #snowflake-realted functions
@@ -70,6 +69,10 @@ if streamlit.button('Get Fruit Load List'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     my_data_rows = get_fruit_load_list()
     streamlit.dataframe(my_data_rows)
+
+
+#don't run anything past here while we trouble shoot
+streamlit.stop()
 
 
 
