@@ -21,18 +21,9 @@ my_fruit_list = pandas.read_csv("https://uni-lab-files.s3.us-west-2.amazonaws.co
 my_fruit_list = my_fruit_list.set_index('Fruit')
 
 # Let's put a pick list here so they can pick the fruit they want to include 
-#fruits_selected = streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index),['Avocado','Strawberries'])
-#fruits_to_show = my_fruit_list.loc[fruits_selected]
-# Display the table on the page.
-#streamlit.dataframe(fruits_to_show)
-
-# Let's put a pick list here so they can pick the fruit they want to include 
 streamlit.multiselect("Pick some fruits:", list(my_fruit_list.index), key = 'Lime')
 #Display the table on the page.
 streamlit.dataframe(my_fruit_list)
-
-
-
 
 
 #Create the repeatable code block (called a function)
@@ -69,7 +60,7 @@ if streamlit.button('Get Fruit Load List'):
     my_data_rows = get_fruit_load_list()
     my_cnx.close()
     streamlit.dataframe(my_data_rows)
-    
+
 #Allow the end user to add a fruit to the list
 def insert_row_snowflake(new_fruit):
     with my_cnx.cursor() as my_cur:
@@ -82,8 +73,3 @@ if streamlit.button('add a fruit to the list'):
     my_cnx = snowflake.connector.connect(**streamlit.secrets["snowflake"])
     back_from_function = insert_row_snowflake(add_my_fruit)
     streamlit.text(back_from_function)
-
-
-
-
-
